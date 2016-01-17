@@ -12,7 +12,28 @@ ERROR CASES: Return -1 for invalid inputs.
 
 NOTES:
 */
-
+int count(int *A, int number,int len)
+{
+	int i, count = 0;
+	for (i = 0; i < len; i++)
+	{
+		if (A[i] == number)
+			count++;
+	}
+	return count;
+}
 int findSingleOccurenceNumber(int *A, int len) {
-	return -1;
+
+	if (len<=0 || A==nullptr)
+		return -1;
+	int i, count_numbers[100],index;
+	for (i = 0; i < len; i++)
+		count_numbers[i] = count(A, A[i], len);
+	for (i = 0; i < len; i++)
+	{
+		if (count_numbers[i] == 1)
+			index =i;
+	}
+	return A[index];
+	
 }
